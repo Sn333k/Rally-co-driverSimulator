@@ -1,0 +1,141 @@
+grammar RallyNotes;
+
+// ====== PUNKT WEJŚCIA ======
+program
+    : pacenote (',' pacenote)* EOF
+    ;
+
+// ====== GŁÓWNA JEDNOSTKA ======
+pacenote
+    : sequence
+    ;
+
+// ====== SEKWENCJE ======
+sequence
+    : element (connector element)*
+    ;
+
+// ====== ELEMENTY ======
+element
+    : actionPhrase
+    | turnPhrase
+    | distancePhrase
+    | crestPhrase
+    | positioningPhrase
+    ;
+
+// ====== ZAKRĘTY ======
+turnPhrase
+    : direction turnSpec? modifier*
+    ;
+
+turnSpec
+    : degree
+    | NAWROT degree?
+    ;
+
+degree
+    : JEDEN
+    | DWA
+    | TRZY
+    | CZTERY
+    | PIEC
+    | MAKS
+    ;
+
+// ====== SZCZYT ======
+crestPhrase
+    : SZCZYT modifier*
+    ;
+
+// ====== PROSTE ======
+distancePhrase
+    : (PIECDZIESIAT | STO) PROSTO?
+    ;
+
+// ====== AKCJE ======
+actionPhrase
+    : (HAMUJ | PRZYHAMUJ | PELNE_HAMOWANIE) element?
+    ;
+
+// ====== POZYCJONOWANIE ======
+positioningPhrase
+    : DO_LEWEJ
+    | DO_PRAWEJ
+    | Z_DROGI
+    ;
+
+// ====== MODYFIKATORY ======
+modifier
+    : PUL
+    | DNEM
+    | PLUS
+    | CIAC
+    | NIE_CIAC
+    | POZNO
+    | WCZESNIE
+    | SMIALO
+    | CELUJ
+    | ZACISK
+    | PRZEZ
+    | ZDUS
+    ;
+
+// ====== ŁĄCZNIKI ======
+connector
+    : DO
+    | PRZED
+    | NA
+    ;
+
+// ====== KIERUNKI ======
+direction
+    : LEWY
+    | PRAWY
+    ;
+
+// ====== TOKENY ======
+
+LEWY              : 'lewy';
+PRAWY             : 'prawy';
+NAWROT            : 'nawrót';
+SZCZYT            : 'szczyt';
+PROSTO            : 'prosto';
+
+JEDEN             : 'jeden';
+DWA               : 'dwa';
+TRZY              : 'trzy';
+CZTERY            : 'cztery';
+PIEC              : 'pięć';
+MAKS              : 'maks';
+
+PUL               : 'pół';
+DNEM              : 'dnem';
+PLUS              : 'plus';
+
+HAMUJ             : 'hamuj';
+PRZYHAMUJ         : 'przyhamuj';
+PELNE_HAMOWANIE   : 'pełne hamowanie';
+ZDUS              : 'zduś';
+
+DO_LEWEJ          : 'do lewej';
+DO_PRAWEJ         : 'do prawej';
+Z_DROGI           : 'z drogi';
+
+CIAC              : 'ciąć';
+NIE_CIAC          : 'nie ciąć';
+POZNO             : 'późno';
+WCZESNIE          : 'wcześnie';
+SMIALO            : 'śmiało';
+CELUJ             : 'celuj';
+ZACISK            : 'zacisk';
+PRZEZ             : 'przez';
+
+DO                : 'do';
+PRZED             : 'przed';
+NA                : 'na';
+
+PIECDZIESIAT      : 'pięćdziesiąt';
+STO               : 'sto';
+
+WS                : [ \t\r\n]+ -> skip;
