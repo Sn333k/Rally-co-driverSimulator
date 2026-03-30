@@ -10,51 +10,22 @@ pacenote:
     ;
 
 sequence:
-    element (connector element)*
+    element (connect=(DO|PRZED|NA) element)*
     ;
 
 element:
-    actionPhrase
-    | turnPhrase
-    | distancePhrase
-    | crestPhrase
-    | positioningPhrase
-    ;
-
-turnPhrase:
-    direction turnSpec? modifier*
+    action=(HAMUJ | PRZYHAMUJ | PELNE_HAMOWANIE) element? #actionPhrase
+    | direct=(LEWY|PRAWY) turnSpec? modifier* #turnPhrase
+    | dist=INT PROSTO? #distancePhrase
+    | SZCZYT modifier* #crestPhrase
+    | (DO_LEWEJ|DO_PRAWEJ|Z_DROGI) #positioningPhrase
     ;
 
 turnSpec:
-    degree
-    | NAWROT degree?
+    degree=(JEDEN|DWA|TRZY|CZTERY|PIEC|MAKS)
+    | NAWROT degree=(JEDEN|DWA|TRZY|CZTERY|PIEC|MAKS)?
     ;
 
-degree:
-    JEDEN
-    | DWA
-    | TRZY
-    | CZTERY
-    | PIEC
-    | MAKS
-    ;
-
-crestPhrase:
-    SZCZYT modifier*
-    ;
-
-distancePhrase:
-    INT PROSTO?
-    ;
-
-actionPhrase:
-    (HAMUJ | PRZYHAMUJ | PELNE_HAMOWANIE) element?
-    ;
-positioningPhrase:
-    DO_LEWEJ
-    | DO_PRAWEJ
-    | Z_DROGI
-    ;
 modifier:
     HALF
     | DNEM
@@ -69,12 +40,3 @@ modifier:
     | PRZEZ
     | ZDUS
     ;
-connector:
-    DO
-    | PRZED
-    | NA
-    ;
-   direction:
-   LEWY
-   | PRAWY
-   ;
