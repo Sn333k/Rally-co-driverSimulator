@@ -17,7 +17,7 @@ public class IntVisitor extends RallyComParserBaseVisitor<Integer>{
 
         System.out.print("Zakręt: " + direction);
         if (ctx.turnSpec() != null) {
-            System.out.print(" " + ctx.turnSpec().getText());
+            System.out.print(" | kat: " + ctx.turnSpec().getText());
         }
         if (!ctx.modifier().isEmpty()) {
             System.out.print(" | modyfikatory: ");
@@ -31,10 +31,10 @@ public class IntVisitor extends RallyComParserBaseVisitor<Integer>{
 
     @Override
     public Integer visitActionPhrase(RallyComParser.ActionPhraseContext ctx) {
-        System.out.println("Akcja: " + ctx.getStart().getText());
+        System.out.print("Akcja: " + ctx.getStart().getText());
 
         if (ctx.element() != null) {
-            System.out.println(" -> dotyczy:");
+            System.out.print(" -> dotyczy: ");
             visit(ctx.element());
         }
 

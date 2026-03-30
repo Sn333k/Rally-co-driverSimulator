@@ -22,6 +22,6 @@ public class Main {
 
 	// create a visitor to traverse the parse tree
 	IntVisitor visitor = new IntVisitor();
-	System.out.println(visitor.visit(tree));
+	visitor.visit(tree);
   }
 }
