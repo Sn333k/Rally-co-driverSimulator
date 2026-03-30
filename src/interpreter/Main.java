@@ -4,7 +4,8 @@ import org.antlr.v4.runtime.tree.*;
 public class Main {
   public static void main(String[] args) throws Exception {
 	// create a CharStream that reads from standard input
-	CharStream input = CharStreams.fromStream(System.in);
+	//CharStream input = CharStreams.fromStream(System.in);
+	CharStream input = CharStreams.fromFileName("input.txt");
 
 	// create a lexer that feeds off of input CharStream
 	RallyComLexer lexer = new RallyComLexer(input);

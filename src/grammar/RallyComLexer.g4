@@ -1,17 +1,17 @@
 lexer grammar RallyComLexer;
 
-LEWY              : 'lewy';
-PRAWY             : 'prawy';
+LEWY              : 'lewy' | 'L';
+PRAWY             : 'prawy' | 'P';
 NAWROT            : 'nawrot';
-SZCZYT            : 'szczyt';
-PROSTO            : 'prosto';
+SZCZYT            : 'szczyt' | '^';
+PROSTO            : 'prosto' | 'PR';
 
-JEDEN             : 'jeden';
-DWA               : 'dwa';
-TRZY              : 'trzy';
-CZTERY            : 'cztery';
-PIEC              : 'pięć';
-MAKS              : 'maks';
+JEDEN             : 'jeden' | '1';
+DWA               : 'dwa' | '2';
+TRZY              : 'trzy' | '3';
+CZTERY            : 'cztery' | '4';
+PIEC              : 'pięć' | '5';
+MAKS              : 'maks' | 'MAX';
 
 HALF              : 'pół';
 DNEM              : 'dnem';
