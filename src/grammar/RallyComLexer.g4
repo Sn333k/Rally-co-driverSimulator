@@ -2,7 +2,7 @@ lexer grammar RallyComLexer;
 
 LEWY              : 'lewy' | 'L';
 PRAWY             : 'prawy' | 'P';
-NAWROT            : 'nawrot';
+NAWROT            : 'nawrot' | 'nawrót' | 'nazad';
 SZCZYT            : 'szczyt' | '^';
 PROSTO            : 'prosto' | 'PR';
 
@@ -13,9 +13,9 @@ CZTERY            : 'cztery' | '4';
 PIEC              : 'pięć' | '5';
 MAKS              : 'maks' | 'MAX';
 
-HALF              : 'pół';
-DNEM              : 'dnem';
-PLUS              : 'plus';
+HALF              : 'pół' | 'pol';
+DNEM              : 'dnem' | '_';
+PLUS              : 'plus' | '+';
 
 HAMUJ             : 'hamuj';
 PRZYHAMUJ         : 'przyhamuj';
@@ -24,7 +24,7 @@ ZDUS              : 'zduś';
 
 DO_LEWEJ          : 'do lewej';
 DO_PRAWEJ         : 'do prawej';
-Z_DROGI           : 'z drogi';
+Z_DROGI           : 'z drogi' | 'poboczem' | 'szutrem';
 
 CIAC              : 'ciąć';
 NIE_CIAC          : 'nie ciąć';
